@@ -1,0 +1,69 @@
+* User Workflow
+1. Ask for daily cards (drill)
+2. Front of card is revealed
+3. User thinks and then flips (press any key)
+4. Back of card is revealed
+5. User scores from 1 to 5
+6. Card is put back into review or scheduled
+7. Repeat until drill is complete
+
+* System workflow
+1. Cards ready for review are collected (review pile)
+2. Each card is shown to user
+3. Given user score, days-until-next-review is updated. If score is 1
+   or 2, the card is put back into review, otherwise the card is taken
+   out of review, and the card's next-review is updated
+4. Repeat until no cards are in review
+
+* Structure
+- A card is a headline with its contents
+- The headline is the front of the card
+- Its content is the back of the card
+- Any metadata associated with the card is a property
+
+* Card metadata
+In order to keep track of when to review a card (and how easy that
+card is), certain metadata is required to be kept. These metadata are
+the following:
+** CURRENT-INTERVAL
+Contains the number of days between when the card was last reviewed
+and the current scheduled date for the card to be reviewed. Default
+is 1.
+** EASE
+A measure of the easiness of the card. Used to multiply
+current-interval. Default is 2.5, minimum is 1.3.
+** NEXT-REVIEW
+Contains the date of the next review.
+
+* Spacing
+Press
+- 1 (Again): ease decreases by 0.2, current interval is multiplied by 0.8, and card goes back to review pile (card not scheduled)
+- 2 (Hard): ease decreases by 0.15, current interval is multiplied by 1.2, and card is scheduled
+- 3 (Good): current interval is multiplied by ease, and card is scheduled
+- 4 (Easy): ease increases by 0.15, current interval is multiplied by ease and 1.3, and card is scheduled
+
+For scores other than Again, the new interval is at least the old interval plus one.
+
+** Remembering overdue cards
+Additionally for Good and Easy, remembering a card past the scheduled date gives a bonus:
+- Good: Half the time overdue is added to the current interval before being multiplied by ease
+- Easy: The full time overdue is added to the current interval before being multiplied by ease
+  
+* [3/4] org-srs progress
+** DONE Card retrieval and display
+CLOSED: [2023-11-03 Fri 22:18]
+** DONE User input
+CLOSED: [2023-11-03 Fri 22:18]
+** DONE [3/3] Time-based flashcards
+CLOSED: [2023-11-04 Sat 11:38]
+*** DONE Metadata implementation
+CLOSED: [2023-11-04 Sat 11:38]
+*** DONE Basic spacing
+CLOSED: [2023-11-04 Sat 11:38]
+*** DONE Metadata retrieval
+CLOSED: [2023-11-04 Sat 11:38]
+** TODO [1/3] Spaced flashcards
+*** DONE Implement basic spaced algorithm
+CLOSED: [2023-11-06 Mon 18:22]
+*** TODO Find/discover/choose spaced algorithm
+*** TODO Implement sophisticated spaced algorithm
