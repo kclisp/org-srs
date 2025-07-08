@@ -24,15 +24,22 @@ The Org SRS files should have headlines, e.g.:
 * Org SRS is great!
 ```
 
-Run `M-x org-srs` to start the drill. You will be prompted in the
-minibuffer, and upon successful review, the card will be automatically
-updated, e.g.:
+Run `M-x org-srs-drill` to start the drill. The card will show up:
+
+```
+残りカード：1
+復習時間：2025-07-08 00:51:49
+Org SRS is great!
+```
+
+and you will be prompted in the minibuffer. Upon review, the card will
+be automatically updated, e.g.:
 
 ```
 * Org SRS is great!
 :PROPERTIES:
 :CURRENT-INTERVAL: 2.5
 :EASE:     2.5
-:NEXT-REVIEW: Thu Jul 10 12:48:37 2025
+:NEXT-REVIEW: Thu Jul 10 12:52:35 2025
 :END:
 ```
