@@ -1,6 +1,6 @@
 # Org SRS
 
-Org SRS is a lightweight spaced reptition system (SRS) using Emac's Org mode.
+Org SRS is a lightweight spaced repetition system (SRS) using Emacs's Org mode.
 
 Each flashcard is an Org entry, and card parameters are stored as properties. Three properties are stored:
 1. `CURRENT-INTERVAL` is the time in days for the next review when the card is reviewed.
